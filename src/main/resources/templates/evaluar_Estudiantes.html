@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="uft-8">
+	<title>Evaluar estudiantes</title>
+	<!-- CSS only -->
+	<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" th:fragment="menu-principal">
+		<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/UTN.png}" width="100" height="100">Sistema de
+			Registro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes}"><i class="fa fa-user-circle"> Estudiantes </i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/evaluar}"> <i class="fas fa-book"> Evaluar
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteC}"><i class="fa fa-folder-open"> Reporte por Carrera
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteA}"><i class="fa fa-folder-open"> Reporte por Actividad
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/criterios}"><i class="fa fa-cog"> Criterios de Evaluacion
+						</i></a>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+		<br>
+		<div class="container">
+			<div class"row">
+				<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+					<h1 class="text-center">Evaluar Estudiantes</h1>
+					<class="card-body">
+						<form th:action="@{/estudiantes/evaluar/{id}(id=${estudiante.id})}" th:object="${estudiante}"
+							method="POST">
+							<div class="input-group">
+								<span class="input-group-text">Datos del alumno</span>
+								<input type="text" name="nombre" th:field="*{nombre}" class="form-control"
+									readonly="readonly">
+								<input type="number" name="matricula" th:field="*{matricula}" class="form-control"
+									readonly="readonly">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Carrera</span>
+								<input type="text" name="carrera" th:field="*{carrera}" class="form-control"
+									readonly="readonly">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Actividad</span>
+								<input type="text" name="actividad" th:field="*{actividad}" class="form-control"
+									readonly="readonly">
+								<input type="text" name="cre_hobb" th:field="*{cre_hobb}" class="form-control"
+									readonly="readonly">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Asistencias de Abril :</span>
+								<input type="number" name="a1" th:field="*{a1}" class="form-control"
+									placeholder="Numero de asistencias:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Asistencias de Mayo :</span>
+								<input type="number" name="a2" th:field="*{a2}" class="form-control"
+									placeholder="Numero de asistencias:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Asistencias de Junio :</span>
+								<input type="number" name="a3" th:field="*{a3}" class="form-control"
+									placeholder="Numero de asistencias:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Asistencias de Julio :</span>
+								<input type="number" name="a4" th:field="*{a4}" class="form-control"
+									placeholder="Numero de asistencias:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Practicas :</span>
+								<input type="number" name="p1" th:field="*{p1}" class="form-control"
+									placeholder="Numero de practicas:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Trabajos Teoricos :</span>
+								<input type="number" name="t1" th:field="*{t1}" class="form-control"
+									placeholder="Numero de trabajos:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Eventos :</span>
+								<input type="number" name="e1" th:field="*{e1}" class="form-control"
+									placeholder="Numero de eventos:">
+							</div>
+							<br>
+							<div class="box-footer">
+								<button class="btn btn-success">Guardar</button>
+								
+								<a class="btn btn-danger" th:href="@{/estudiantes/evaluar}" role="button">Cancelar</a>
+							</div>
+						</form>
+				</div>
+			</div>
+		</div>
+		</div>
+</body>
+
+</html>

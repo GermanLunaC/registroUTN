@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="uft-8">
+	<title>Listado de estudiantes</title>
+	<!-- CSS only -->
+	<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" th:fragment="menu-principal">
+		<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/UTN.png}" width="100" height="100">Sistema de
+			Registro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"> </span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes}"><i class="fa fa-user-circle"> Estudiantes </i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/evaluar}"> <i class="fas fa-book"> Evaluar
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteC}"><i class="fa fa-folder-open"> Reporte por Carrera
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteA}"><i class="fa fa-folder-open"> Reporte por Actividad
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/criterios}"><i class="fa fa-cog"> Criterios de Evaluacion
+						</i></a>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+
+		<div class="container">
+		<h1 class="text-center">Criterios de Evaluacion</h1>
+		<form th:action="@{/estudiantes}" th:object="${estudiante}" method="POST">
+			<table class="table table-dark table-striped table-striped-columns">
+			<thead>
+				<tr>
+					<th class="text-center">Total de Asistencias<br>25%</th>
+					<th class="text-center">Total de Practicas<br>25%</th>
+					<th class="text-center">Total de Trabajos<br>25%</th>
+					<th class="text-center">Total de Eventos<br>25%</th>				
+				</tr>
+			</thead>
+			</table>
+			<div class="container">
+			<b><FONT COLOR="red">**Porcentaje minimo aprobatorio		80 </FONT></b>
+				<h1 class="text-center">Lista de Estudiantes</h1>
+			</div>
+			<div class="row">
+			</div>
+			<br>
+			<table class="table table-dark table-striped table-striped-columns">
+				<thead>
+					<tr>
+						<th colspan="5" class="text-center">Datos del Alumno</thcolspan="2">
+						<th colspan="4" class="text-center">Sumatoria mensual de asistencias</th>
+						<th colspan="2" class="text-center">Total de asistencias</th>
+						<th colspan="2" class="text-center">Practicas</th>
+						<th colspan="2" class="text-center">Trabajos teoricos</th>
+						<th colspan="2" class="text-center">Eventos</th>
+						<th colspan="1" class="text-center">Sumatoria</th>
+						<th colspan="1" class="text-center">Aprobado</th>
+						<th colspan="1" class="text-center"></th>
+
+					</tr>
+					<tr>
+						<th>Nombre</th>
+						<th>Matricula</th>
+						<th>Carrera</th>
+						<th>Actividad</th>
+						<th>Credito-Hobby</th>
+						<th>Abril</th>
+						<th>Mayo</th>
+						<th>Junio</th>
+						<th>Julio</th>
+						<th>NUM</th>
+						<th>%</th>
+						<th>NUMP</th>
+						<th>%</th>
+						<th>NUM</th>
+						<th>%</th>
+						<th>NUM</th>
+						<th>%</th>
+						<th class="text-center">#</th>
+						<th>Si / No</th>
+						<th>Operaciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="estudiante : ${estudiantes}">
+						<td th:text="${estudiante.nombre}"></td>
+						<td th:text="${estudiante.matricula}"></td>
+						<td th:text="${estudiante.carrera}"></td>
+						<td th:text="${estudiante.actividad}"></td>
+						<td th:text="${estudiante.cre_hobb}"></td>
+						<td class="text-center" th:text="${estudiante.a1}"></td>
+						<td class="text-center" th:text="${estudiante.a2}"></td>
+						<td class="text-center" th:text="${estudiante.a3}"></td>
+						<td class="text-center" th:text="${estudiante.a4}"></td>
+						<td class="text-center" th:text="${estudiante.to1}">Nombre</td>
+						<td class="text-center" th:text="${estudiante.to2}">Nombre</td>
+						<td class="text-center" th:text="${estudiante.p1}"></td>
+						<td class="text-center" th:text="${estudiante.to3}"></td>
+						<td class="text-center" th:text="${estudiante.t1}"></td>
+						<td class="text-center" th:text="${estudiante.to4}"></td>
+						<td class="text-center" th:text="${estudiante.e1}"></td>
+						<td class="text-center" th:text="${estudiante.to5}"></td>
+						<td class="text-center" th:text="${estudiante.tt}"></td>
+						<td class="text-center" th:text="${estudiante.situacion}"></td>
+						<td>
+							<a th:href="@{/estudiantes/evaluar/{id}(id=${estudiante.id})}"
+								class="btn btn-info">Evaluar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</body>
+
+</html>

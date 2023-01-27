@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="uft-8">
+	<title>Listado de estudiantes</title>
+	<!-- CSS only -->
+	<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" th:fragment="menu-principal">
+		<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/UTN.png}" width="100" height="100">Sistema de
+			Registro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes}"><i class="fa fa-user-circle"> Estudiantes </i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/evaluar}"> <i class="fas fa-book"> Evaluar
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteC}"><i class="fa fa-folder-open"> Reporte por Carrera
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteA}"><i class="fa fa-folder-open"> Reporte por Actividad
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/criterios}"><i class="fa fa-cog"> Criterios de Evaluacion
+						</i></a>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+
+		<div class="container">
+			<div class="row">
+				<h1 class="text-center">Lista de Estudiantes</h1>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<a th:href="@{/estudiantes/nuevo}" class="btn btn-success btm-sm mb3">Agregar</a>
+			
+				</div>
+			</div>
+			<br>
+			<table class="table table-dark table-striped table-striped-columns">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Matricula</th>
+						<th>Carrera</th>
+						<th>Grupo</th>
+						<th>Actividad</th>
+						<th>Sexo</th>
+						<th>Fecha de Ingreso</th>
+						<th>Credito / Hobby</th>
+						<th>Categoria</th>
+						<th>Operaciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="estudiante : ${estudiantes}">
+						<td th:text="${estudiante.nombre}">Nombre</td>
+						<td th:text="${estudiante.matricula}">Nombre</td>
+						<td th:text="${estudiante.carrera}">Nombre</td>
+						<td th:text="${estudiante.grupo}">Nombre</td>
+						<td th:text="${estudiante.actividad}">Nombre</td>
+						<td th:text="${estudiante.sexo}">Nombre</td>
+						<td th:text="${estudiante.fechaI}">Nombre</td>
+						<td th:text="${estudiante.cre_hobb}">Nombre</td>
+						<td th:text="${estudiante.categoria}">Nombre</td>
+						<td>
+							<a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}" class="btn btn-success btn-sm" role="button" title="Editar"><i
+											class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+							<a th:href="@{/estudiantes/{id}(id=${estudiante.id})}" onclick="return confirm('Estas seguro que quiere eliminar este registro')" class="btn btn-danger btn-sm" role="button" title="Eliminar"><i class="fas fa-trash"
+											aria-hidden="true"></i></a>
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+			<a class="btn btn-success" th:href="@{/estudiantes/exportarExcel}">Exportar a Excel</a>
+		</div>
+</body>
+
+</html>

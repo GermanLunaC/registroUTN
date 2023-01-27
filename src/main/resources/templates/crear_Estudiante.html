@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="uft-8">
+	<title>Registro de estudiantes</title>
+	<!-- CSS only -->
+	<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" th:fragment="menu-principal">
+		<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/UTN.png}" width="100" height="100">Sistema de
+			Registro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes}"><i class="fa fa-user-circle"> Estudiantes </i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/evaluar}"> <i class="fas fa-book"> Evaluar
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteC}"><i class="fa fa-folder-open"> Reporte por Carrera
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/reporteA}"><i class="fa fa-folder-open"> Reporte por Actividad
+						</i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" th:href="@{/estudiantes/criterios}"><i class="fa fa-cog"> Criterios de Evaluacion
+						</i></a>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+	<li>
+	<li>
+	<li>
+	<li>
+	<li>
+		<br>
+		<div class="container">
+			<div class"row">
+				<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+					<h1 class="text-center">Registro de Estudiantes</h1>
+					<class="card-body">
+						<form th:action="@{/estudiantes}" th:object="${estudiante}" method="POST">
+							<div class="input-group">
+								<span class="input-group-text">Nombre del alumno : </span>
+								<input type="text" name="nombre" required="required" th:field="*{nombre}" class="form-control"
+									placeholder="Ingrese su nombre:">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Matricula :</span>
+								<input type="number" name="matricula" required="required" th:field="*{matricula}" class="form-control"
+									placeholder="Ingrese su matricula:">
+							</div>
+							<br>
+							<div class="input-group mb-3">
+								<label class="input-group-text" for="inputGroupSelect01">Carrera</label>
+								<select class="form-control" name="carrera" required="required" th:field="*{carrera}" id="carrera">
+										<option value="Ing. en Sistemas Computacionales">Ing. en Sistemas Computacionales</option>
+										<option value="Ing. Industrial">Ing. Industrial</option>
+										<option value="Ing. Ambiental">Ing. Ambiental</option>
+										<option value="Ing. en Energias Renovables">Ing. en Energias Renovables</option>
+										<option value="Ing. en Administracion">Ing. en Administracion</option>
+										<option value="Ing. en Tics">Ing. en Tics</option>
+										<option value="Ing. en Sistemas Automotrices">Ing. en Sistemas Automotrices</option>
+										<option value="Lic. en Contaduria Publica">Lic. en Contaduria Publica</option>
+										<option value="Lic. en Gastronomia">Lic. en Gastronomia</option>
+									</select>
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Grupo :</span>
+								<input type="text" name="grupo" required="required" th:field="*{grupo}" class="form-control"
+									placeholder="Ingrese su grupo:">
+							</div>
+							<br>
+							<div class="input-group mb-3">
+								<label class="input-group-text" for="inputGroupSelect01">Actividad</label>
+								<select class="form-control" name="actividad" required="required" th:field="*{actividad}" id="actividad">
+										id="actividad">
+										<option value="Tae Kwon Do">Tae Kwon Do</option>
+										<option value="Futbol Americano">Futbol Americano</option>
+										<option value="Basquetbol">Basquetbol</option>
+										<option value="Ajedrez">Ajedrez</option>
+										<option value="Oratoria">Oratoria</option>
+										<option value="Danza Folklorica">Danza Folklorica</option>
+										<option value="Ritmos Latinos">Ritmos Latinos</option>
+										<option value="Futbol Soccer">Futbol Soccer</option>
+										<option value="Natacion">Natacion</option>
+										<option value="Canto">Canto</option>
+										<option value="Musica">Musica</option>
+										<option value="Danza Moderna">Danza Moderna</option>
+										<option value="Atletismo">Atletismo</option>
+									</select>
+								</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Fecha de Inscripcion : </span>
+								<input type="date" class="form-control" name="fechaI" id="fechaI"
+									placeholder="Fecha de inscripcion" required="required" th:field="*{fechaI}">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Sexo : </span>
+								<ul class="list-group">
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Femenino"
+											id="firstCheckbox" th:field="*{sexo}">
+										<label class="form-check-label" for="firstCheckbox">Femenino</label>
+									</li>
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Masculino"
+											id="sexoM" th:field="*{sexo}">
+										<label class="form-check-label" for="secondCheckbox">Masculino</label>
+									</li>
+								</ul>
+								<span class="input-group-text">Credito o Hobby : </span>
+								<ul class="list-group">
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Credito"
+											id="Credito" th:field="*{cre_hobb}">
+										<label class="form-check-label" for="firstCheckbox">Credito</label>
+									</li>
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Hobby"
+											id="Hobby" th:field="*{cre_hobb}">
+										<label class="form-check-label" for="secondCheckbox">Hobby</label>
+									</li>
+								</ul>
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-text">Categoria : </span>
+								<ul class="list-group">
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Principiante"
+											id="firstCheckbox" th:field="*{categoria}">
+										<label class="form-check-label" for="firstCheckbox">Principiante</label>
+									</li>
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Intermedio"
+											id="sexoM" th:field="*{categoria}">
+										<label class="form-check-label" for="secondCheckbox">Intermedio</label>
+									</li>
+									<li class="list-group-item">
+										<input class="form-check-input me-1" type="checkbox" value="Avanzado" id="sexoM"
+											th:field="*{categoria}">
+										<label class="form-check-label" for="secondCheckbox">Avanzado</label>
+									</li>
+								</ul>
+							</div>
+							<br>
+							<div class="box-footer">
+								<button class="btn btn-success">Guardar</button>
+							</div>
+						</form>
+				</div>
+			</div>
+		</div>
+		</div>
+</body>
+
+</html>
